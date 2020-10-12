@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function items() {
+export default function Error() {
     return (
         <div>
-            items component
+            error
         </div>
     )
 }

@@ -1,0 +1,50 @@
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffa451;
+  border-bottom: 1px solid #ff3a3021;
+  box-shadow: 1px 1px 20px 0px #2917065b;
+
+  padding: 5px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.nav-cart{
+    background-color: #FF3B30;
+    color: white;
+    padding: 5px;
+    width: 5%;
+    border: 1px solid#fff;
+    outline: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.logo-text {
+  color: whitesmoke;
+ 
+}
+.link-container .link-item {
+  display: inline-block;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+.link-item:hover {
+  background: #fff;
+  color: gray;
+  transition: all 1s ease-in;
+}
+.basket {
+  cursor: pointer;
+  background: white;
+}
+@media(max-width:600px){
+    .nav-cart{
+        width: 20%;
+    }
+}
