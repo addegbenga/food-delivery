@@ -1,0 +1,50 @@
+.trackorder-container{
+    width: 100%;
+    height: 100vh;
+    min-height: 100%;
+    background: white;
+    padding-top: 7rem;
+}
+
+.order-text-container{
+    
+    display: flex;
+    flex-direction: column;
+    color: #27214d;
+    align-items: center;
+}
+.trackorder-wrapper{
+   background: #fff;
+   width: 60%;
+   height: 70vh;
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   box-shadow: 0px 10px 10px 5px #E5E5E5;
+}
+.track-img{
+    width: 20%;
+    margin: auto;
+}
+.btn-order{
+    width: 20%;
+    margin: auto;
+    padding: 10px;
+    background: #ffa047;
+    border: none;
+    outline-color: wheat;
+    color: #fff;
+    border-radius: 10px;
+}
+.btn-continue-shop{
+    
+    width: 30%;
+    padding: 10px;
+    margin: auto;
+    color: #ffa047;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid #ffa047 ;
+    outline-color: #ffa047;
+}
