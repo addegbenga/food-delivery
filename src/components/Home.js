@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import HomeImg from "../images/home.png";
 import isometric from "../images/fuckiso.png";
 import "./homeStyle.css";
@@ -17,7 +18,10 @@ export default function Home() {
           Welcome to Fruit Hub home of refreshment we are always here to serve
           your needs
         </h1>
-        <button className="btn-home">Order now</button>
+        <button className="btn-home">
+          {" "}
+          <Link to="/shopnow" className="home-link"> Order now</Link>
+        </button>
       </div>
     </div>
   );

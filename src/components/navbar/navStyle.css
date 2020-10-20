@@ -10,7 +10,7 @@
   border-bottom: 1px solid #ff3a3021;
   box-shadow: 1px 1px 20px 0px #2917065b;
 
-  padding: 5px;
+  padding: 3px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -25,21 +25,28 @@
     border-radius: 5px;
 }
 .logo-text {
-  color: whitesmoke;
+color: #27214d;
  
 }
 .link-container .link-item {
   display: inline-block;
   padding: 1rem;
-  color: #fff;
+color: #27214d;
   cursor: pointer;
-  display: none;
+ 
+  /* display: none; */
 }
-.link-item:hover {
-  background: #fff;
-  color: gray;
+.link{
+  text-decoration: none;
+  list-style: none;
+  color: #27214d;
+}
+/* .link:focus{
+  border-bottom: 1px solid #27214d;
   transition: all 1s ease-in;
-}
+} */
+
+
 .basket {
   cursor: pointer;
   background: white;
@@ -47,5 +54,8 @@
 @media(max-width:600px){
     .nav-cart{
         width: 20%;
+    }
+    .link-container{
+      display: none;
     }
 }

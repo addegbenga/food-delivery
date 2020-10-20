@@ -3,7 +3,6 @@
   width: 100%;
   height: 100vh;
   min-height: 100%;
-
   position: relative;
 }
 .home-header {
@@ -16,6 +15,11 @@
 }
 .home-header-container {
   padding: 150px 0 0 50px;
+}
+.home-link{
+  text-decoration: none;
+  color: #27214d;
+  font-size: 14px;
 }
 .btn-home {
   padding: 10px;
@@ -30,10 +34,11 @@
   outline: none;
   width: 10%;
   cursor: pointer;
-  transition: all 1s ease-out;
+ 
 }
 .btn-home:hover{
     background: #f18e31;
+    transition: all 2s ease-out;
 }
 
 .img-container {
