@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./shopnowStyle.css";
+import axios from "axios";
 import honeylime from "../../images/honeylime.png";
 import tropical from "../../images/tropical.png";
 import glowberry from "../../images/glowberry.png";
 import redfruit from "../../images/redfruit.png";
 import love from "../../images/love.png";
+import { globalContext } from "../context/globalContext";
 export default function Shopnow() {
+  const { dispatch, products } = useContext(globalContext);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/products/all");
+        dispatch({
+          type: "GET_PRODUCTS",
+          payload: response.data.data,
+        });
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    getProducts();
+  }, []);
+
   return (
     <div className="shop-container">
       <div className="shop-wrapper">
