@@ -1,4 +1,11 @@
-import React, { createContext, useReducer } from "react";
+import React, {
+  createContext,
+  useReducer,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import { globalReducer } from "./globalReducer";
 import setAuthToken from "./setAuthToken";
 import axios from "axios";
@@ -9,14 +16,42 @@ export const initialState = {
   isAuthenticated: false,
   products: [],
   productLiked: null,
-  product: null,
+  product: {},
   likedProduct: null,
+  openCart: false,
+  localcart: [],
+  carted: false,
+  counter:1,
+  getlocalcart: JSON.parse(localStorage.getItem("carting")),
+  carts: [],
+  defaultPrice: null,
+  price: null,
 };
 
 export const globalContext = createContext(initialState);
 
 export default function GlobalContextProvider(props) {
   const [state, dispatch] = useReducer(globalReducer, initialState);
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/products/all");
+        dispatch({
+          type: "GET_PRODUCTS",
+          payload: response.data.data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetch();
+  }, [dispatch, state.carted]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.carts));
+  }, [state.carts]);
+
   //loading user
   const loadUser = async () => {
     setAuthToken(localStorage.token);
@@ -94,6 +129,14 @@ export default function GlobalContextProvider(props) {
         productLiked: state.productLiked,
         isAuthenticated: state.isAuthenticated,
         user: state.user,
+        openCart: state.openCart,
+        carts: state.carts,
+        cartSet: state.cartSet,
+        carted: state.carted,
+        defaultPrice: state.defaultPrice,
+        price: state.price,
+        counter:state.counter,
+
         dispatch,
         registerUser,
         loginUser,

@@ -75,10 +75,12 @@
   outline: none;
   border: none;
   margin: 10px;
+  cursor: pointer;
 }
 .price-incre-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin: auto;
   border-bottom: 1px solid #f3f3f3;
   padding-bottom: 20px;
@@ -90,6 +92,14 @@
   display: inline-block;
   padding-right: 1rem;
   color: #27214D;
+  
+}
+.incre-btn{
+  padding: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 .increement:nth-child(1) {
   background: transparent;
@@ -115,6 +125,7 @@
 }
 
 .shopdetails-footer {
+  width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,4 +145,14 @@
 .go-back-link{
   text-decoration: none;
   color: #27214D;
+}
+@media(max-width:950px){
+  .shopdetails-footer{
+    width: 100%
+  }
+}
+@media (max-width:600px){
+  .shopdetails-footer{
+    width: 100%;
+  }
 }

@@ -61,7 +61,7 @@ export default function Form() {
           }}
         />
         <input
-          type="text"
+          type="number"
           name="productQuantity"
           value={productQuantity}
           placeholder="QUANTITY"

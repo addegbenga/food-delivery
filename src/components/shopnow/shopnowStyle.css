@@ -2,28 +2,37 @@
   width: 100%;
   height: 150vh;
   min-height: 100%;
-  background: #fff;
-  padding-top: 5rem;
+  background: #f7f7f7;
+  /* padding-top: 5rem; */
 }
 .shop-wrapper {
   box-shadow: 0px 10px 10px 5px #e5e5e5;
-  background: #fff;
+  background: #f5f5f5;
   margin: auto;
-  width: 70%;
+  width: 95%;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.shop-flex{
+  display:flex;
+  flex-direction: column;
+}
+.shop-test{
+  border-radius: 10px;
+  background:rgba(255, 255, 255, 0.575);
+ 
+}
 .recommended-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .recommend-input {
   padding: 10px;
   width: 40%;
-  border-radius: 15px;
+  border-radius: 5px;
   border: none;
   outline: none;
   background: #e5e5e5;
@@ -40,15 +49,17 @@
   object-fit: cover;
 }
 .recommended-item {
-  margin: 10px;
+  margin: 3px;
   position: relative;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 10px;
-  width: 35%;
+  /* width: 35%; */
+  width: 200px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 10px 10px 5px #e5e5e5;
+  box-shadow: 0px 3px 10px 1px #e5e5e5;
+  flex-grow: 1;
 
   align-items: center;
 }
@@ -60,13 +71,6 @@
 }
 .love-image {
   width: 100%;
-}
-.plus-icon {
-  background: #fff2e7;
-  color: #ffa047;
-  text-align: center;
-  border-radius: 50%;
-  width: 25%;
 }
 .paragraph {
   color: #27214d;
@@ -87,11 +91,12 @@
   padding: 4px;
   width: 40%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .feature-container {
   margin-top: 3rem;
+  background-color: #fff;
 }
 .feature-item-container {
   display: flex;
@@ -101,7 +106,6 @@
 .feature-wrapper {
   display: flex;
   width: 100%;
-  overflow-x: scroll;
 }
 
 .feature-item-container .feature-item {
@@ -180,12 +184,12 @@
   margin: 10px;
   position: relative;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 10px;
   width: 35%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 10px 10px 5px #e5e5e5;
+  box-shadow: 0px 3px 10px 1px #e5e5e5;
   align-items: center;
 }
 .feature-items:nth-child(1) {

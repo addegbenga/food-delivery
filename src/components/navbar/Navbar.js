@@ -1,18 +1,24 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import basket from "../../images/basket.png";
-import sort from "../../images/sort.png";
+import arrowdown from "../../images/arrowdown.png";
+import cart from "../../images/shopcart.png";
 import camo from "../../images/camo.png";
 
 import { globalContext } from "../context/globalContext";
 import "./navStyle.css";
+import NavForm from "./NavForm";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, user, logOutUser } = useContext(globalContext);
+  const { isAuthenticated, user, logOutUser, dispatch, carts } = useContext(
+    globalContext
+  );
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  const cartLength = carts && carts.length;
+
   return (
     <div className="navbar-container">
       <h1 className="logo-text">
@@ -21,62 +27,68 @@ export default function Navbar() {
           Fruit Hub
         </Link>
       </h1>
-      <ul className="link-container">
-        <li className="link-item">
-          <Link className="link" to="/">
-            Home
-          </Link>
-        </li>
-        <li className="link-item">
-          <Link className="link" to="/shopnow">
-            Shop
-          </Link>
-        </li>
-        <li className="link-item">
-          <Link className="link" to="/">
-            About
-          </Link>
-        </li>
-      </ul>
-      {/* <img src={basket} alt="logo" className="basket" /> */}
-      <div className="nav-auth-container">
-        {isOpen && (
-          <div className="nav-auth-tooltip-container">
-            <ul className="nav-auth-tooltip-list">
-              <li className="tooltip-list">
-                {isAuthenticated && user ? (
-                  <span>{user.email}</span>
-                ) : (
-                  <Link to="/register">Sign up</Link>
-                )}
-              </li>
-              <li className="tooltip-list">
-                {isAuthenticated ? (
-                  <Link to="/" onClick={logOutUser}>
-                    Sign Out
-                  </Link>
-                ) : (
-                  <Link to="/login">Sign In</Link>
-                )}
-              </li>
-              <li className="tooltip-list">Delete account</li>
-            </ul>
-          </div>
-        )}
-        <button className="nav-cart">Cart</button>
-        {isAuthenticated && user ? (
-          <p className="auth-banner" onClick={toggleOpen}>
-            {user.name[0].toUpperCase()}
-          </p>
-        ) : (
-          <img
-            onClick={toggleOpen}
-            className="auth-camo"
-            src={camo}
-            alt="camo"
-          />
-        )}
-      </div>
+      {isOpen && (
+        <div className="nav-auth-tooltip-container">
+          <ul className="nav-auth-tooltip-list">
+            <li className="tooltip-list">
+              {isAuthenticated && user ? (
+                <span>{user.email}</span>
+              ) : (
+                <Link to="/register">Sign up</Link>
+              )}
+            </li>
+            <li className="tooltip-list">
+              {isAuthenticated ? (
+                <Link to="/" onClick={logOutUser}>
+                  Sign Out
+                </Link>
+              ) : (
+                <Link to="/login">Sign In</Link>
+              )}
+            </li>
+            <li className="tooltip-list">Delete account</li>
+          </ul>
+        </div>
+      )}
+
+      <NavForm />
+
+      {isAuthenticated && user ? (
+        <p className="auth-banner" onClick={toggleOpen}>
+          {"Hi, " + user.name}{" "}
+          <span className="arr-down">
+            <img src={arrowdown} alt="arr" />
+          </span>
+        </p>
+      ) : (
+        <p className="auth-banner" onClick={toggleOpen}>
+          Sign Up
+          <span className="arr-down">
+            <img src={arrowdown} alt="arr" />
+          </span>
+        </p>
+      )}
+
+      <p className="auth-banner">
+        {" "}
+        Help{" "}
+        <span className="arr-down">
+          <img src={arrowdown} alt="arr" />
+        </span>
+      </p>
+      <button
+        className="nav-cart"
+        onClick={() =>
+          dispatch({
+            type: "TOGGLE_CART",
+          })
+        }
+      >
+        <span className="cart-img-span">
+          <img src={cart} alt="cart" className="cart-nav-img" />
+          {cartLength === 0 ? "Cart" : "Cart :" + cartLength}
+        </span>
+      </button>
     </div>
   );
 }

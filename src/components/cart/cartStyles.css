@@ -1,0 +1,119 @@
+.cart-container {
+  z-index: 6;
+  background: rgba(0, 0, 0, 0.575);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #27214d;
+  height: 100%;
+}
+.cart-inner-container {
+  overflow-y: scroll;
+  border-radius: 10px;
+  z-index: 3;
+  background: #fff; 
+   /* background: #f7f7f7; */
+  /* background: rgb(228, 228, 228); */
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  bottom: 0;
+  width: 70%;
+
+}
+.cart-header {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 24px;
+}
+.cart-h4 {
+  font-size: 11px;
+  font-weight: 600;
+}
+.cart-total-h4 {
+  font-size: 13px;
+}
+.cart-img {
+  margin-right: 10px;
+}
+.sort-img {
+  width: 60%;
+}
+.cart-btn-remove {
+  background: transparent;
+  outline: none;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 2px;
+  color: #27214d;
+}
+.cart-clear-btn {
+  font-size: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  outline: none;
+  color: #27214d;
+  border: 1px solid #fff;
+}
+.btn-clear-container {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  padding: 10px;
+}
+.cart-items {
+  display: flex;
+  align-items: center;
+}
+
+.cart-items-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.2px solid #27214d21;
+}
+
+.cart-total-container {
+  display: flex;
+  justify-content: space-around;
+}
+.cart-incre-container {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-btn-count {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-cart-img-container {
+  margin-top: 2rem;
+  padding: 15px;
+  border-radius: 50%;
+  background: #f7f7f7;
+}
+.cart-btn-back{
+  margin-top: 2rem;
+  padding: 3px;
+  cursor: pointer;
+  border: 0.3px solid #27214d;
+  background: #fff;
+}

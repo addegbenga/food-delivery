@@ -1,8 +1,12 @@
-.home-container {
-  background: #ffa047;
+/* .home-container {
+  
+  background-image: url("../images/fuckiso.png") bottom center no-repeat,
+    linear-gradient(green, blue);
+  background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
   min-height: 100%;
+  height: 100vh;
+
   position: relative;
 }
 .home-header {
@@ -14,31 +18,35 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .home-header-container {
-  padding: 150px 0 0 50px;
+  height: 60%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
 }
-.home-link{
+.home-link {
   text-decoration: none;
   color: #27214d;
   font-size: 14px;
 }
 .btn-home {
-  padding: 10px;
+  
   margin-top: 15px;
-  /* background: #ff3b30; */
+  
   background: transparent;
   border: 2px solid #fff;
   color: #fff;
   position: relative;
-  z-index: 999;
+  z-index: 5;
   border-radius: 5px;
   outline: none;
   width: 10%;
   cursor: pointer;
- 
 }
-.btn-home:hover{
-    background: #f18e31;
-    transition: all 2s ease-out;
+.btn-home:hover {
+  background: #f18e31;
+  transition: all 2s ease-out;
 }
 
 .img-container {
@@ -62,18 +70,13 @@
 }
 .iso-img {
   width: 100%;
-  /* min-width: 800px; */
+
 }
 .home-img {
   width: 70%;
-  /* min-width: 200px; */
+
 }
-/* .test{
-    overflow: hidden;
-    width: 100vw;
-    height: 30%;
-    position: relative;
-} */
+
 
 @media (max-width: 600px) {
   .home-header {
@@ -84,12 +87,11 @@
     padding: 0;
     width: 90%;
     margin: auto;
-    /* background-color: teal; */
-   display: flex;
-   justify-content: center;
-   height: 80vh;
-   flex-direction: column;
   
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    flex-direction: column;
   }
   .btn-home {
     width: 50%;
@@ -101,4 +103,109 @@
     position: absolute;
     top: 70%;
   }
+} */
+
+.home-container {
+  width: 100%;
+  height: 95vh;
+  min-height: 100%;
+  background: #f7f7f7;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.home-inner-container {
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px rgba(128, 128, 128, 0.241);
+  width: 95%;
+  height: 90%;
+  background-image: url("../images/recipe2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-inner-container::before {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.185);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.home-btn-left,
+.home-btn-right {
+  position: absolute;
+  padding: 10px 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+.home-btn-right {
+  right: 0;
+  top: 50%;
+}
+.home-btn-left {
+  left: 0;
+  top: 50%;
+}
+.home-balls {
+  bottom: 3%;
+width: 100%;
+display: flex;
+justify-content: center;
+  position: absolute;
+}
+.box {
+  padding: 3px;
+  list-style: none;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f05c17;
+  display: inline-block;
+  /* box-shadow: 0px 0px 5px 2px #e27c0e ; */
+}
+
+.home-bg-text-container {
+  margin: 6rem;
+  width: 50%;
+}
+.home-bg-h1 {
+  color: black;
+  font-weight: 900;
+  line-height: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 34px;
+}
+
+@media (max-width: 600px) {
+  .home-bg-text-container {
+    margin-top: 4rem;
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
+  .home-bg-h1 {
+    font-size: 20px;
+
+    line-height: 2rem;
+  }
+}
+
+.home-btn-explore {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  padding: 3px 40px 3px 3px;
+  box-shadow: 0px 0px 3px 2px #e5e5e5;
+  /* background: #f8580d; */
+  border: 1px solid #f05c17;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  color: #27214d;
 }
