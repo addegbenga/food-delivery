@@ -4,6 +4,8 @@ import ShopNow from "../components/shopnow/Shopnow"
 import "./homeStyle.css";
 
 export default function Home() {
+  
+  
   return (
     <>
      

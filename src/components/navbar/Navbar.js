@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import arrowdown from "../../images/arrowdown.png";
 import cart from "../../images/shopcart.png";
+import logofruithub from "../../images/logofruithub.png";
 import camo from "../../images/camo.png";
 
 import { globalContext } from "../context/globalContext";
@@ -9,9 +10,14 @@ import "./navStyle.css";
 import NavForm from "./NavForm";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, user, logOutUser, dispatch, carts } = useContext(
-    globalContext
-  );
+  const {
+    isAuthenticated,
+    user,
+    logOutUser,
+    dispatch,
+    carts,
+    toggleNav,
+  } = useContext(globalContext);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -21,12 +27,17 @@ export default function Navbar() {
 
   return (
     <div className="navbar-container">
-      <h1 className="logo-text">
-        {" "}
-        <Link className="link" to="/">
-          Fruit Hub
-        </Link>
-      </h1>
+      <i
+        className="fas fa-bars"
+        onClick={() =>
+          dispatch({
+            type: "TOGGLE_NAV",
+          })
+        }
+      ></i>
+      <Link className="link" to="/">
+        <img src={logofruithub} alt="logo" className="logo-fruithub" />
+      </Link>
       {isOpen && (
         <div className="nav-auth-tooltip-container">
           <ul className="nav-auth-tooltip-list">
@@ -50,9 +61,7 @@ export default function Navbar() {
           </ul>
         </div>
       )}
-
       <NavForm />
-
       {isAuthenticated && user ? (
         <p className="auth-banner" onClick={toggleOpen}>
           {"Hi, " + user.name}{" "}
@@ -68,7 +77,6 @@ export default function Navbar() {
           </span>
         </p>
       )}
-
       <p className="auth-banner">
         {" "}
         Help{" "}
@@ -76,19 +84,26 @@ export default function Navbar() {
           <img src={arrowdown} alt="arr" />
         </span>
       </p>
-      <button
-        className="nav-cart"
-        onClick={() =>
-          dispatch({
-            type: "TOGGLE_CART",
-          })
-        }
-      >
-        <span className="cart-img-span">
-          <img src={cart} alt="cart" className="cart-nav-img" />
-          {cartLength === 0 ? "Cart" : "Cart :" + cartLength}
-        </span>
-      </button>
+      <Link to="/carts">
+        <button
+          className="nav-cart"
+          onClick={() =>
+            dispatch({
+              type: "TOGGLE_CART",
+            })
+          }
+        >
+          <span className="cart-img-span">
+            {/* <img src={cart} alt="cart" className="cart-nav-img" /> */}
+            {cartLength === 0 ? (
+              <i className="fas fa-shopping-cart"></i>
+            ) : (
+              <i className="fas fa-shopping-cart">{cartLength}</i>
+            )}
+            {/* {cartLength === 0 ? "Cart" : "Cart :" + cartLength} */}
+          </span>
+        </button>
+      </Link>
     </div>
   );
 }

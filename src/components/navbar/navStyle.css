@@ -6,39 +6,46 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background: #ffa451;
+  /* background: #ffa451; */
+  background: #e28c3b;
   border-bottom: 1px solid #ff3a3021;
   box-shadow: 1px 1px 20px 0px #2917065b;
   padding: 3px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.auth-banner{
- position: relative;
- cursor: pointer;
+
+.fa-shopping-cart,
+.fa-bars {
+  color: #101010;
 }
-.arr-down{
- position: absolute;
+.auth-banner {
+  position: relative;
+  cursor: pointer;
+  font-size: 13px;
 }
-.nav-form{
+.arr-down {
+  position: absolute;
+}
+.nav-form {
   width: 40vw;
   display: flex;
- 
 }
-.nav-form-input{
+.nav-form-input {
   width: 100%;
   margin-right: 0.5rem;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   outline: none;
   border: none;
-
 }
-.nav-form-btn{
+.nav-form-btn {
   padding: 0 15px 0px 15px;
   box-shadow: 0px 0px 3px 2px #e5e5e5;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   border-radius: 5px;
   color: #27214d;
   outline: none;
@@ -47,12 +54,12 @@
 }
 .nav-cart {
   background: transparent;
-border: none;
+  border: none;
   outline: white;
   cursor: pointer;
   border-radius: 5px;
 }
-.cart-nav-img{
+.cart-nav-img {
   width: 25%;
 }
 
@@ -66,8 +73,8 @@ border: none;
   box-shadow: 0px 0px 3px 2px #e5e5e5;
   border-radius: 10px;
 }
-.nav-auth-tooltip-container::after{
-  content:" ";
+.nav-auth-tooltip-container::after {
+  content: " ";
   position: absolute;
   margin-left: -10px;
   border-width: 17px;
@@ -78,19 +85,22 @@ border: none;
 }
 .tooltip-list {
   padding: 15px;
-  font-size: 14px;
   list-style: none;
   cursor: pointer;
 }
 .tooltip-list:nth-child(1) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.193);
+  border-bottom: 1px solid #00000031;
 }
 .tooltip-list:nth-child(2) {
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.193);
+  border-bottom: 0.5px solid #00000031;
 }
-
+.logo-fruithub {
+  width: 60%;
+  cursor: pointer;
+}
 .logo-text {
   color: #27214d;
+  font-size: 24px;
 }
 .link-container .link-item {
   display: inline-block;
@@ -110,7 +120,7 @@ border: none;
   transition: all 1s ease-in;
 } */
 
-.auth-name-container{
+.auth-name-container {
   background-color: red;
   width: 100%;
   display: flex;
@@ -123,9 +133,23 @@ border: none;
 }
 @media (max-width: 600px) {
   .nav-cart {
-    width: 40%;
+    width: 80%;
   }
   .link-container {
+    display: none;
+  }
+  .navbar-container {
+    justify-content: space-between;
+  }
+  .fa-bars {
+    flex: 0.5;
+    cursor: pointer;
+  }
+
+  .auth-banner {
+    display: none;
+  }
+  .nav-form {
     display: none;
   }
   .logo-text {

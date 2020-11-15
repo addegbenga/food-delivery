@@ -79,7 +79,9 @@
 }
 .price-incre-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 100%; */
   align-items: center;
   margin: auto;
   border-bottom: 1px solid #f3f3f3;

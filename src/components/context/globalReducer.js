@@ -23,17 +23,33 @@ export const globalReducer = (state, action) => {
         user: null,
         token: null,
       };
+    case "GET_PRODUCTS_REQUEST":
+      return { loading: true };
     case "GET_PRODUCTS":
       return {
         ...state,
         products: action.payload,
+        loading: false,
       };
-
+    case "GET_PRODUCTS_REQUEST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case "PRODUCT_REQUEST":
+      return { loading: true };
     case "PRODUCT":
       return {
         ...state,
-        product: { ...action.payload },
+        product: action.payload,
+        // counter: 1,
+        loading: false,
         // price: action.payload.productPrice,
+      };
+    case "PRODUCT_REQUEST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
       };
 
     case "ADD_PRODUCT":
@@ -52,72 +68,93 @@ export const globalReducer = (state, action) => {
     case "GET_LIKES":
       return {
         ...state,
-        likes: action.payload,
+        likedProduct: action.payload,
+      };
+    case "ADD_LIKE":
+      return {
+        ...state,
+        likedProduct: [...state.likedProduct, action.payload],
+        liked: !state.liked,
+      };
+    case "ERRORS":
+      return {
+        ...state,
+        error: action.payload,
       };
     case "CART_ITEM":
       let tempItems =
-        state.product &&
-        state.products.find((product) => product._id === action.payload);
+        state.product._id === action.payload.product._id
+          ? {
+              ...state.product,
+              count: (state.product.productQuantity = action.payload.counter),
+            }
+          : null;
       let tempItem2 =
         state.products &&
-        state.products.find((item) => item._id === action.payload);
+        state.products.find((item) => item._id === action.payload.product._id);
       return {
         ...state,
         carts: [tempItems, ...state.carts],
         carted: tempItem2,
+
         localcart: localStorage.setItem(
           "carting",
           JSON.stringify([tempItems, ...state.carts])
         ),
-        openCart: true
+        openCart: true,
       };
-
-    case "INCREMENT_COUNTER": {
+    case "INCREMENT_COUNTER":
       let tempProduct = state.product._id === action.payload._id && {
         ...state.product,
         counter: state.product.productQuantity++,
-        
       };
+      const price = action.payload.productPrice;
       let tempCart = state.carts.map((cart) => {
+        const { productQuantity } = cart;
+
         if (cart._id === action.payload._id) {
-          cart = { ...cart, counter: cart.productQuantity++ };
+          cart = {
+            ...cart,
+            counter: cart.productQuantity++,
+            price: productQuantity * price,
+          };
         }
         return cart;
-      })
+      });
 
       return {
         ...state,
         carts: tempCart,
       };
-    }
     case "DECREMENT_COUNTER":
+      const prices = action.payload.productPrice;
       let decrease = state.counter * action.payload.productPrice;
-      let tempCart = state.carts.map((cart) => {
+      let tempCarts = state.carts.map((cart) => {
+        const { productQuantity } = cart;
         if (cart._id === action.payload._id) {
           cart = {
             ...cart,
-            counter:
-              cart.productQuantity === 1
-                ? (cart.productQuantity = 1)
-                : cart.productQuantity--,
+
+            counter: cart.productQuantity === 1 ? 1 : cart.productQuantity--,
+            price: productQuantity * prices,
           };
         }
         return cart;
       });
       return {
         ...state,
-        carts: tempCart,
+        carts: tempCarts,
       };
-    case "RESET_COUNTER":
-      return {
-        ...state,
-        counter: 1,
-      };
-
     case "TOGGLE_CART":
       return {
         ...state,
         openCart: !state.openCart,
+      };
+
+    case "TOGGLE_NAV":
+      return {
+        ...state,
+        toggleNav: !state.toggleNav,
       };
 
     default:

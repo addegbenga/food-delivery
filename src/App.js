@@ -13,10 +13,13 @@ import Admin from "./components/admin/Admin";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { globalContext } from "./components/context/globalContext";
+import axios from "axios";
 import ShopCart from "./components/cart/ShopCart";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
-  const { loadUser, isAuthenticated } = useContext(globalContext);
+  const { loadUser, isAuthenticated, dispatch } = useContext(globalContext);
+
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,15 +27,17 @@ function App() {
   return (
     <div>
       <Navbar />
-      <ShopCart />
+      <Sidebar />
+
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/shopnow" component={Shopnow} /> */}
         <Route exact path="/shopdetails:id" component={Shopnowdetails} />
-        <Route exact path= "/cart" component={CartPage}/>
+        <Route exact path="/cart" component={CartPage} />
         <Route exact path="/items" component={Items} />
         <Route exact path="/trackorder" component={Trackorder} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/carts" component={ShopCart} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route component={Error} />

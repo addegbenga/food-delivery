@@ -1,0 +1,7 @@
+.side-nav-container{
+    position: absolute;
+    width: 50%;
+    height: 98%;
+    background: red;
+    z-index: 3;
+}

@@ -51,7 +51,7 @@ export default function Form() {
           placeholder="PRODUCTNAME"
         />
         <input
-          type="text"
+          type="number"
           name="productPrice"
           value={productPrice}
           placeholder="PRICE"

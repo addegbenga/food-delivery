@@ -7,29 +7,39 @@ import sortup from "../../images/sortup.png";
 import "./cartStyles.css";
 import { Link } from "react-router-dom";
 
-export default function ShopCart() {
+export default function ShopCart({ match }) {
   const { openCart, carts, dispatch, counter, defaultPrice } = useContext(
     globalContext
   );
 
   const cartId = carts && carts.map((cart) => cart._id);
+  const productId = match.params.id;
 
-  useEffect(() => {
-    const updateCount = async () => {
-      const response = await axios.post(
-        `http://localhost:5000/products/increment`, cartId
-      );
-      dispatch({
-        type: "INCREMENT_COUNTER",
-        payload: response,
-      });
-      console.log(response)
-    };
-    updateCount();
-  }, []);
+  // useEffect(() => {
+  //   const addToCart = async () => {
+  //     if(productId){
+
+  //       try {
+  //         const data = await axios.get(
+  //           `http://localhost:5000/products/${productId}`
+  //         );
+  //         dispatch({
+  //           type: "ADD_TO_CART",
+  //           payload: data.data,
+  //         });
+  //         console.log(data.data)
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     }else{
+  //       return new Error("ID no defined")
+  //     }
+  //   };
+  //   addToCart();
+  // }, []);
 
   return (
-    openCart && (
+    // openCart && (
       <div className="cart-container">
         <div className="cart-inner-container">
           <h1 className="cart-header">Cart Items</h1>
@@ -45,7 +55,7 @@ export default function ShopCart() {
                   <div className="cart-image-detail">
                     <h4 className="cart-h4">{cart.productname}</h4>
                     <h4 className="cart-h4">
-                      ${defaultPrice ? defaultPrice : cart.productPrice}
+                      ${cart.price ? cart.price : cart.productPrice}
                     </h4>
                     <button className="cart-btn-remove">remove</button>
                   </div>
@@ -111,21 +121,8 @@ export default function ShopCart() {
               </div>
             </div>
           )}
-
-          {/* 
-          {carts.length && (
-            <div>
-              <div className="cart-total-container">
-                <h1 className="cart-total-h4">Total</h1>
-                <h1 className="cart-total-h4">$200</h1>
-              </div>
-              <div className="btn-clear-container">
-                <button className="cart-clear-btn">CLEAR CART</button>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     )
-  );
+  // );
 }

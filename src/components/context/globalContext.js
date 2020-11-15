@@ -12,20 +12,23 @@ import axios from "axios";
 
 export const initialState = {
   token: localStorage.getItem("token"),
+  loading: null,
+  error: null,
   user: null,
   isAuthenticated: false,
   products: [],
-  productLiked: null,
   product: {},
-  likedProduct: null,
+  liked: false,
+  likedProduct: [],
   openCart: false,
   localcart: [],
   carted: false,
-  counter:1,
+  counter: 1,
   getlocalcart: JSON.parse(localStorage.getItem("carting")),
   carts: [],
   defaultPrice: null,
   price: null,
+  toggleNav: false,
 };
 
 export const globalContext = createContext(initialState);
@@ -33,9 +36,73 @@ export const globalContext = createContext(initialState);
 export default function GlobalContextProvider(props) {
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
+  const addLike = async (id) => {
+    const formData = {
+      product: id,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/products/addlike",
+        formData
+      );
+
+      dispatch({
+        type: "ADD_LIKE",
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: "ERRORS",
+        paylaod: error,
+      });
+    }
+  };
+
+  const removeLike = async (id) => {
+    const formdata = {
+      id: id,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/products/deleteLike",
+        formdata
+      );
+      dispatch({
+        type: "REMOVE_LIKE",
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const getLikes = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/products/alllike"
+        );
+        dispatch({
+          type: "GET_LIKES",
+          payload: response.data,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getLikes();
+  }, [dispatch]);
+
   useEffect(() => {
     const fetch = async () => {
       try {
+        // dispatch({
+        //   type: "GET_PRODUCTS_REQUEST",
+        // });
         const response = await axios.get("http://localhost:5000/products/all");
         dispatch({
           type: "GET_PRODUCTS",
@@ -43,10 +110,14 @@ export default function GlobalContextProvider(props) {
         });
       } catch (error) {
         console.log(error);
+        dispatch({
+          type: "GET_PRODUCTS_REQUEST_FAIL",
+          payload: error.message,
+        });
       }
     };
     fetch();
-  }, [dispatch, state.carted]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.carts));
@@ -135,8 +206,14 @@ export default function GlobalContextProvider(props) {
         carted: state.carted,
         defaultPrice: state.defaultPrice,
         price: state.price,
-        counter:state.counter,
-
+        counter: state.counter,
+        loading: state.loading,
+        error: state.error,
+        likedProduct: state.likedProduct,
+        liked: state.liked,
+        toggleNav: state.toggleNav,
+        addLike,
+        removeLike,
         dispatch,
         registerUser,
         loginUser,
