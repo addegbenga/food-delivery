@@ -2,6 +2,25 @@
     position: absolute;
     width: 50%;
     height: 98%;
-    background: red;
+    background: white;
     z-index: 3;
+}
+.side-nav-inner{
+    /* background: green; */
+    margin-top: 4rem;
+    height: 50%;
+}
+.side-bar-link{
+    background-color: rgb(242, 238, 238);
+    list-style: none;
+    margin-bottom: 0.5rem;
+    padding:1rem;
+}
+.side-bar-link:hover{
+    background-color: #fff;
+    color:#ffa047;
+    cursor: pointer;
+}
+.fa-user, .fa-bookmark,.fa-shopping-bag, .fa-address-card{
+    padding: 4px;
 }

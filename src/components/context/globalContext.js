@@ -102,18 +102,20 @@ export default function GlobalContextProvider(props) {
       try {
         // dispatch({
         //   type: "GET_PRODUCTS_REQUEST",
-        // });
+        // // });
+
         const response = await axios.get("http://localhost:5000/products/all");
+
         dispatch({
           type: "GET_PRODUCTS",
           payload: response.data.data,
         });
       } catch (error) {
         console.log(error);
-        dispatch({
-          type: "GET_PRODUCTS_REQUEST_FAIL",
-          payload: error.message,
-        });
+        // dispatch({
+        //   type: "GET_PRODUCTS_REQUEST_FAIL",
+        //   payload: error.message,
+        // });
       }
     };
     fetch();

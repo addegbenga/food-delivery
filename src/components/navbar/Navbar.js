@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import arrowdown from "../../images/arrowdown.png";
 import cart from "../../images/shopcart.png";
-import logofruithub from "../../images/logofruithub.png";
+import logofruithub from "../../images/logo-fine4.png";
 import camo from "../../images/camo.png";
 
 import { globalContext } from "../context/globalContext";
@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <div className="navbar-container">
       <i
-        className="fas fa-bars"
+        className="fas fa-bars fa-lg "
         onClick={() =>
           dispatch({
             type: "TOGGLE_NAV",
@@ -63,11 +63,8 @@ export default function Navbar() {
       )}
       <NavForm />
       {isAuthenticated && user ? (
-        <p className="auth-banner" onClick={toggleOpen}>
-          {"Hi, " + user.name}{" "}
-          <span className="arr-down">
-            <img src={arrowdown} alt="arr" />
-          </span>
+        <p className="auth-logo" onClick={toggleOpen}>
+         <i className="fa fa-user fa-lg user"></i>
         </p>
       ) : (
         <p className="auth-banner" onClick={toggleOpen}>
@@ -77,13 +74,9 @@ export default function Navbar() {
           </span>
         </p>
       )}
-      <p className="auth-banner">
-        {" "}
-        Help{" "}
-        <span className="arr-down">
-          <img src={arrowdown} alt="arr" />
-        </span>
-      </p>
+
+      <i className="fa fa-search fa-lg search"></i>
+      <i className="fa fa-gratipay fa-lg saved"></i>
       <Link to="/carts">
         <button
           className="nav-cart"
@@ -96,9 +89,9 @@ export default function Navbar() {
           <span className="cart-img-span">
             {/* <img src={cart} alt="cart" className="cart-nav-img" /> */}
             {cartLength === 0 ? (
-              <i className="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart fa-lg cart-x"></i>
             ) : (
-              <i className="fas fa-shopping-cart">{cartLength}</i>
+              <i className="fas fa-shopping-cart  fa-lg cart-x">{cartLength}</i>
             )}
             {/* {cartLength === 0 ? "Cart" : "Cart :" + cartLength} */}
           </span>
